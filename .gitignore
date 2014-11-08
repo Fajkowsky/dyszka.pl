@@ -1,0 +1,9 @@
+# Project
+.idea/
+
+# -- Frontend
+frontend/bower_components/*
+frontend/npm-debug.log
+frontend/node_modules/*
+
+# -- Backend
