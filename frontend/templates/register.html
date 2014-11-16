@@ -1,1 +1,26 @@
-<div id="register">Register<p>{{ message }}</p></div>
+<div id="register">
+    <div class="container">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">User name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="User name"
+                       ng-model="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Email address</label>
+                <input type="email" class="form-control" placeholder="Email address" ng-model="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                       ng-model="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Repeat password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Repeat password"
+                       ng-model="passwordRepeat">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="onRegister()">Submit</button>
+        </form>
+    </div>
+</div>
