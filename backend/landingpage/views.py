@@ -11,4 +11,4 @@ def register_json(request):
         msg = Person.validate(**loads(request.body))
         return json_response(msg)
     else:
-        return json_response({"msg": "Not possible."})
+        return json_response({"status": False, "msg": "Not possible."})
