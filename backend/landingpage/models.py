@@ -23,4 +23,6 @@ class Person(User):
         if User.objects.filter(username=data['username']) or User.objects.filter(email=data['email']):
             return {'status': False, 'msg': 'Username or email present in database.'}
 
+        del data['password2']
+        User.objects.create_user(**data)
         return {'status': True, 'msg': 'Saved.'}
