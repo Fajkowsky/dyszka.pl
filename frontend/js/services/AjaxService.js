@@ -9,7 +9,15 @@ angular.module("myApp").service("AjaxService", function ($http, $location) {
         return $http.post(url + "/register/", data).success(
             function (data) {
                 console.log(data);
-                $location.path("/");
+                data = angular.toJson(data);
+                console.log("powinnen być JSON" + data);
+
+                if (data.status === "True") {
+                    $location.path("/");
+                } else {
+                    console.log("error");
+                    return (data.msg);
+                }
             });
     };
 });
