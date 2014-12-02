@@ -9,7 +9,7 @@ angular.module("myApp").service("AjaxService", function ($http, $location) {
         return $http.post(url + "/register/", data).success(
             function (data) {
                 console.log(data);
-                $location.goToUrl("/");
+                $location.path("/");
             });
     };
 });
