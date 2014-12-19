@@ -1,9 +1,9 @@
 angular.module("myApp").controller("registerController", function ($scope, AjaxService) {
     $scope.user = {
-        "name": "",
+        "username": "",
         "email": "",
         "password": "",
-        "passwordRepeat": ""
+        "password2": ""
     };
 
     $scope.onRegister = function () {

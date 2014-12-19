@@ -20,9 +20,9 @@ class Person(User):
         if data['password'] != data['password2']:
             return {'status': False, 'msg': 'Password not equal.'}
 
-        if User.objects.filter(username=data['username']) or User.objects.filter(email=data['email']):
+        if Person.objects.filter(username=data['username']) or Person.objects.filter(email=data['email']):
             return {'status': False, 'msg': 'Username or email present in database.'}
 
         del data['password2']
-        User.objects.create_user(**data)
+        Person.objects.create_user(**data)
         return {'status': True, 'msg': 'Saved.'}
