@@ -21,6 +21,9 @@ class ResponseTest(TestCase):
             'password2': 'password'
         }
 
+    def test_dummy(self):
+        self.assertTrue(2+2)
+
     def test_get_response(self):
         response = self.client.get('/register/')
         self.assertEqual(response.content, dumps(message['not_possible']))
