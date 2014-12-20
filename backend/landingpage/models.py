@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, UserManager
+from backend.messages import message
 
 fields = (
     'username',
@@ -15,7 +16,7 @@ class Person(User):
     def validate(cls, **data):
         for field in fields:
             if field not in data:
-                return {'status': False, 'msg': 'Not all fields are present.'}
+                return message['not_all_fields']
 
         if data['password'] != data['password2']:
             return {'status': False, 'msg': 'Password not equal.'}
