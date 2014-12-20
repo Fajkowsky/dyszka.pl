@@ -22,3 +22,18 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 All dependencies should be installed.
+
+## Running
+
+### Backend
+```sh
+$ cd backend/
+$ source venv/bin/activate
+$ python manage.py runserver
+```
+
+### Frontend
+```sh
+$ cd frontend/
+$ grunt run_backend
+```
