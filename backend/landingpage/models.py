@@ -22,8 +22,8 @@ class Person(User):
             return message['not_equal']
 
         if Person.objects.filter(username=data['username']) or Person.objects.filter(email=data['email']):
-            return {'status': False, 'msg': 'Username or email present in database.'}
+            return message['already_in_database']
 
         del data['password2']
         Person.objects.create_user(**data)
-        return {'status': True, 'msg': 'Saved.'}
+        return message['saved']

@@ -2,16 +2,23 @@ from json import dumps
 
 from django.test import TestCase, Client
 from backend.messages import message
+from models import Person
 
 
 class ResponseTest(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = {
+        self.bad_user = {
+            'username': 'username',
+            'email': 'emailemail.com',
+            'password': 'password',
+            'password2': 'password2'
+        }
+        self.good_user = {
             'username': 'username',
             'email': 'email@email.com',
             'password': 'password',
-            'password2': 'password2'
+            'password2': 'password'
         }
 
     def test_get_response(self):
@@ -23,5 +30,19 @@ class ResponseTest(TestCase):
         self.assertEqual(response.content, dumps(message['not_all_fields']))
 
     def test_post_response_not_equal(self):
-        response = self.client.post('/register/', data=dumps(self.user), content_type='application/json')
+        response = self.client.post('/register/', data=dumps(self.bad_user), content_type='application/json')
         self.assertEqual(response.content, dumps(message['not_equal']))
+
+    def test_post_response_already_in_database(self):
+        Person(
+            username=self.good_user['username'],
+            email=self.good_user['email'],
+            password=self.good_user['password']
+        ).save()
+
+        response = self.client.post('/register/', data=dumps(self.good_user), content_type='application/json')
+        self.assertEqual(response.content, dumps(message['already_in_database']))
+
+    def test_post_response_saved(self):
+        response = self.client.post('/register/', data=dumps(self.good_user), content_type='application/json')
+        self.assertEqual(response.content, dumps(message['saved']))
