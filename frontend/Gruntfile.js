@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 		}
     });
 
-    grunt.registerTask('default', ['bower']);
+    grunt.registerTask('default', ['bower', 'shell:install_backend']);
 
 	grunt.registerTask('install_backend', ['shell:install_backend']);
 	grunt.registerTask('run_backend', ['shell:run_backend']);
