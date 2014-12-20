@@ -19,7 +19,7 @@ class Person(User):
                 return message['not_all_fields']
 
         if data['password'] != data['password2']:
-            return {'status': False, 'msg': 'Password not equal.'}
+            return message['not_equal']
 
         if Person.objects.filter(username=data['username']) or Person.objects.filter(email=data['email']):
             return {'status': False, 'msg': 'Username or email present in database.'}
