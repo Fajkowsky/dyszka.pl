@@ -32,11 +32,11 @@ class ResponseTest(TestCase):
         response = self.client.post('/register/', content_type='application/json')
         self.assertEqual(response.content, dumps(message['not_all_fields']))
 
-    def test_post_response_not_equal(self):
+    def test_post_response_not_equal_emails(self):
         response = self.client.post('/register/', data=dumps(self.bad_user), content_type='application/json')
         self.assertEqual(response.content, dumps(message['not_equal']))
 
-    def test_post_response_already_in_database(self):
+    def test_post_response_user_already_in_database(self):
         Person(
             username=self.good_user['username'],
             email=self.good_user['email'],
@@ -46,6 +46,13 @@ class ResponseTest(TestCase):
         response = self.client.post('/register/', data=dumps(self.good_user), content_type='application/json')
         self.assertEqual(response.content, dumps(message['already_in_database']))
 
-    def test_post_response_saved(self):
+    def test_post_response_user_saved(self):
         response = self.client.post('/register/', data=dumps(self.good_user), content_type='application/json')
         self.assertEqual(response.content, dumps(message['saved']))
+
+    def test_post_response_not_valid_email(self):
+        bad_user = self.bad_user
+        bad_user['password2'] = self.bad_user['password']
+        print(self.bad_user)
+        response = self.client.post('/register/', data=dumps(bad_user), content_type='application/json')
+        self.assertEqual(response.content, dumps(message['not_valid_email']))

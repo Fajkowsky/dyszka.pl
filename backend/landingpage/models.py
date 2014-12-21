@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, UserManager
 from backend.messages import message
+from re import match
 
 fields = (
     'username',
@@ -23,6 +24,9 @@ class Person(User):
 
         if Person.objects.filter(username=data['username']) or Person.objects.filter(email=data['email']):
             return message['already_in_database']
+
+        if not match('[^@]+@[^@]+\.[^@]+', data['email']):
+            return message['not_valid_email']
 
         del data['password2']
         Person.objects.create_user(**data)
