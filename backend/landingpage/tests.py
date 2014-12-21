@@ -53,6 +53,5 @@ class ResponseTest(TestCase):
     def test_post_response_not_valid_email(self):
         bad_user = self.bad_user
         bad_user['password2'] = self.bad_user['password']
-        print(self.bad_user)
         response = self.client.post('/register/', data=dumps(bad_user), content_type='application/json')
         self.assertEqual(response.content, dumps(message['not_valid_email']))
