@@ -16,14 +16,3 @@ myApp.config(function ($routeProvider) {
             controller: "registerController"
         });
 });
-
-myApp.controller('mainController', function ($scope) {
-    $scope.message = 'Everyone come and see how good I look!';
-});
-
-myApp.controller('loginController', function ($scope) {
-    $scope.message = 'Look! I am an login page.';
-});
-
-myApp.controller('registerController', function ($scope) {
-});
