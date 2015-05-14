@@ -1,5 +1,0 @@
-Django==1.7.1
-South==1.0.1
-argparse==1.2.1
-django-cors-headers==0.13
-wsgiref==0.1.2

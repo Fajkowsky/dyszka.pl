@@ -1,6 +1,0 @@
-[run]
-omit = *venv*
-    backend*
-    manage.py
-    *migrations*
-    *tests.py
