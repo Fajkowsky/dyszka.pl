@@ -6,5 +6,5 @@ class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(40), nullable=False)
-    short_desc = db.Column(db.Strin(100), nullable=False)
-    long_desc = db.Column(db.Text, nullable=False)
+    short_desc = db.Column(db.Strin(100))
+    long_desc = db.Column(db.Text)
