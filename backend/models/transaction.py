@@ -8,6 +8,7 @@ statuses = (
 
 
 class Transaction(db.Model):
+    __tablename__ = 'transaction'
     id = db.Column(db.Integer, primary_key=True)
     offer_id = db.Column(db.Integer, db.ForeignKey('offer.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

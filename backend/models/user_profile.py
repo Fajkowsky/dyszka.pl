@@ -2,6 +2,7 @@ from . import db
 
 
 class UserProfile(db.Model):
+    __tablename__ = 'user_profile'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     description = db.Column(db.Text)
