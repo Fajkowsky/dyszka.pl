@@ -8,7 +8,7 @@ Description goes here.
 Go to `frontend` directory and type:
 
 ```sh
-$ npm install
+$ npm install -g
 $ grunt
 ```
 All librares should download automatically.
