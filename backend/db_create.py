@@ -1,16 +1,11 @@
 from app import db
-from models.user import User
 from utils.database import get_or_create
+from fixtures import fixtures
 
 def generate_data():
-    user = get_or_create(
-        User,
-        email="admin@dyszka.pl",
-        username="admin",
-        password="a",
-        active=1
-    )
-
+    for item in fixtures:
+        for data in item['data']:
+            get_or_create(item['model'], **data)
 
 db.create_all()
 generate_data()
