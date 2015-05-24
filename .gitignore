@@ -13,3 +13,4 @@ backend/venv/*
 *.pyc
 backend/.coverage
 backend/htmlcov/
+*.db
