@@ -1,3 +1,11 @@
-from flask.ext.sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+__all__ = [
+    'category',
+    'chat',
+    'message',
+    'offer',
+    'offer_media',
+    'rate',
+    'transaction',
+    'transaction_event',
+    'user'
+]
