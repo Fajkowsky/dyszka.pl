@@ -7,6 +7,5 @@ __all__ = [
     'rate',
     'transaction',
     'transaction_event',
-    'user',
-    'user_profile'
+    'user'
 ]
