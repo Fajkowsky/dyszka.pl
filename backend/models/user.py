@@ -1,5 +1,5 @@
 from app import db
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -9,3 +9,14 @@ class User(db.Model):
     password = db.Column(db.String(120))
     active = db.Column(db.Boolean, default=False)
     user_token = db.Column(db.String(120))
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        self.create_password(kwargs['password'])
+
+    def create_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)

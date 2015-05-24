@@ -10,4 +10,4 @@ from models import *
 
 api = Api(app)
 from resources import main
-api.add_resource(main.Main, '/')
+api.add_resource(main.Main, '/', endpoint='index')
