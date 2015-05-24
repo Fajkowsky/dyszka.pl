@@ -1,4 +1,4 @@
-from . import db
+from app import db
 
 
 class Category(db.Model):
@@ -6,4 +6,4 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
     description = db.Column(db.Text)
-    parent_id = db.Column(db.Integer, db.ForeignKey('node.id'))
+    parent_id = db.Column(db.Integer, db.ForeignKey('category.id'))
